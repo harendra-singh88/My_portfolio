@@ -343,7 +343,7 @@ h1 .highlight {
 }
 
 /* ── Hero Image Container ── */
-.hero-image-container {
+/* .hero-image-container {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -352,9 +352,22 @@ h1 .highlight {
   position: relative;
   z-index: 2;
   gap: 2.5rem;
+} */
+ .hero-image-container::before {
+  content: '';
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,229,160,0.13) 0%, rgba(0,184,255,0.07) 45%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -56%);
+  animation: ringGlow 4s ease-in-out infinite;
+  z-index: 0;
 }
 
-.hero-image {
+/* .hero-image {
   width: 100%;
   max-width: 350px;
   height: 350px;
@@ -363,8 +376,25 @@ h1 .highlight {
   box-shadow: 0 0 60px rgba(0, 229, 160, 0.15);
   border: 2px solid rgba(0, 229, 160, 0.2);
   animation: float 3s ease-in-out infinite;
-}
+} */
 
+.hero-image {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.05) saturate(1.1);
+  outline: 3px solid var(--accent);
+  outline-offset: 6px;
+  box-shadow:
+    0 0 0 9px rgba(0,229,160,0.08),
+    0 0 40px rgba(0,229,160,0.2),
+    0 0 80px rgba(0,184,255,0.1);
+  animation: imgFloat 5s ease-in-out infinite, borderCycle 4s linear infinite;
+}
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-15px); }
